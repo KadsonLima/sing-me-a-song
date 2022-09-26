@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+const API_BASE_URL = "http://localhost:5000"
+
+Cypress.Commands.add("resetDatabase", () => {
+	cy.request("POST", `${API_BASE_URL}/tests/reset-database`).as(
+		"resetDatabase"
+	)
+})
+
+Cypress.Commands.add("createRecommendation", (amount = 1, score = 0) => {
+	cy.request(
+		"POST",
+		`${API_BASE_URL}/tests/seed-recommendations/${amount}?score=${score}`
+	).as("createRecommendation")
+})

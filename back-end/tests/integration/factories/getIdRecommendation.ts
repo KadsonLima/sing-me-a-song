@@ -1,5 +1,5 @@
-import { prisma } from "../../../src/database";
-import { createRecomendation } from "./newRecommendation";
+import { prisma } from "../../../src/database.js";
+import { createRecomendation } from "./newRecommendation.js";
 
 
 export  function  getRecommendationId(score=0){
